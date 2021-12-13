@@ -5,15 +5,16 @@
 **说明：`$`后为命令，其他的为输出或说明。**  
 
 终端  
-Windows:Text terminal推荐[putty](https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe), Xterm推荐使用[MobaXterm](https://mobaxterm.mobatek.net/download.html)  
+Windows: Text terminal推荐[putty](https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe), Xterm推荐使用[MobaXterm](https://mobaxterm.mobatek.net/download.html)  
 Mac or Linux: `ssh -Y username@serverip`  
 
-```
+```sh
 登录服务器10.100.128.160
 `ssh -l username 10.100.128.160` (公共用户public，密码public123)  
 
 对于计算量较大的任务，请不要在登录节点上直接运行，以交互式方式qrsh登录到计算节点，或者用qsub提交任务
 ```
+
 ## 二、Linux基本操作  
 
 **掌握以下常用的Linux命令：**
@@ -28,9 +29,11 @@ Mac or Linux: `ssh -Y username@serverip`
 
 ## 三、使用集群    
 尽量不要在登录节点（管理节点）上运行大型程序，集群已部署好SGE作业调度系统  
+
 **（一）交互式方式登录**  
 登录管理结点后，请用`qrsh`以交互式方式登录计算节点，系统会自动分配并登录到计算节点。一般普通的小的计算任务采取交互式方式登录  
-```
+
+```sh
 $ qstat
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
 -----------------------------------------------------------------------------------------------------------------
@@ -52,7 +55,7 @@ job-ID  prior   name       user         state submit/start at     queue         
 **（二）用qsub递交批量任务**  
 较大的计算任务推荐使用SGE作业管理系统提交任务，先将任务脚本存放在一个文件中，然后用`qsub`提交任务，下面是一个简单的任务`work.sh`, 任务的脚本文件work.sh中包含以下内容：  
 
-```
+```sh
 #!/bin/bash
 #$ -S /bin/bash
 #$ -N JobName
@@ -63,7 +66,7 @@ sleep 60
 
 用`qsub`提交任务，`qstat`查看任务运行情况  
 
-```
+```sh
 $ qsub work.sh
 $ qstat
 job-ID  prior   name       user         state submit/start at     queue                          slots ja-task-ID 
@@ -81,14 +84,14 @@ job-ID  prior   name       user         state submit/start at     queue         
 
 **申请更多的内存资源**  
 系统默认申请的内存为2G，如果你需要申请更多的内存资源，需要指定  
-```
+```sh
 qsub -cwd -l mem_free=5G,h_vmem=6G batch.sh
 #申请5G，最多只能使用6G
 ```
 
 **并行计算**  
 如果你的程序支持并行计算，你可以指定CPU数和计算核数。   
-```
+```sh
 qsub -pe smp 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
 ```
 1. Use the   `-pe local K`   option to request K slots on a single cluster node.  
@@ -97,7 +100,7 @@ qsub -pe smp 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
 4. Use `h_vmem= nG` to set the hard memory limit for your job. Important: the value, `n`, you set in `h_vmem` is the total memory you set via  `mem_free` divided by the number of slots specified for `-pe`. In other words n=N/K.  
 
 或者把参数写到脚本里面  
-```
+```sh
 #!/bin/bash
 #$ -S /bin/bash
 #$ -N JobName
@@ -108,7 +111,7 @@ qsub -pe smp 6 -R y -l mem_free=6G,h_vmem=6G  myScript.sh
 需要执行的任务命令
 ```
 **删除任务**  
-```
+```sh
 qdel 139
 ```
 
@@ -117,4 +120,4 @@ qdel 139
 [Linux command line](https://github.com/hnnd/Linux_command_line)
 
 **生物信息学非常有用的一行代码集成**  
-      [Bioinformatics one-liners](https://github.com/hnnd/oneliners)
+[Bioinformatics one-liners](https://github.com/hnnd/oneliners)
