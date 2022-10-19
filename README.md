@@ -120,4 +120,4 @@ qdel 139
 [Linux command line](https://github.com/hnnd/Linux_command_line)
 
 **生物信息学非常有用的一行代码集成**  
-[Bioinformatics one-liners](https://github.com/hnnd/oneliners)
+[Bioinformatics one-liners](https://github.com/ZhijunBioinf/oneliners)
