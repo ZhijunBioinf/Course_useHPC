@@ -117,7 +117,7 @@ qdel 139
 
 ## 四、一些有用的资料  
 **Linux学习资料**  
-[Linux command line](https://github.com/hnnd/Linux_command_line)
+[Linux command line](https://github.com/ZhijunBioinf/Linux_command_line)
 
 **生物信息学非常有用的一行代码集成**  
 [Bioinformatics one-liners](https://github.com/ZhijunBioinf/oneliners)
