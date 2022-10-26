@@ -8,12 +8,10 @@
 Windows: Text terminal推荐[putty](https://the.earth.li/~sgtatham/putty/latest/w32/putty.exe), Xterm推荐使用[MobaXterm](https://mobaxterm.mobatek.net/download.html)  
 Mac or Linux: `ssh -Y username@serverip`  
 
-```sh
-登录服务器10.7.254.22
-`ssh -l username 10.7.254.22` (公共用户public，密码public123)  
+登录服务器IP:  
+10.7.254.22  
 
-对于计算量较大的任务，请不要在登录节点上直接运行，以交互式方式qrsh登录到计算节点，或者用qsub提交任务
-```
+对于计算量较大的任务，<font color="red">请不要在登录节点上直接运行，</font> 以交互式方式qrsh登录到计算节点，或者用qsub提交任务  
 
 ## 二、Linux基本操作  
 
