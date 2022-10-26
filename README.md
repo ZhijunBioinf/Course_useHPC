@@ -11,7 +11,9 @@ Mac or Linux: `ssh -Y username@serverip`
 登录服务器IP:  
 10.7.254.22  
 
-对于计算量较大的任务，<font color="red">请不要在登录节点上直接运行，</font> 以交互式方式qrsh登录到计算节点，或者用qsub提交任务  
+```diff
+对于计算量较大的任务，请不要在登录节点上直接运行，以交互式方式qrsh登录到计算节点，或者用qsub提交任务
+```
 
 ## 二、Linux基本操作  
 
